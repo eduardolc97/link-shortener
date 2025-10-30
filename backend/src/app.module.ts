@@ -7,13 +7,13 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    LinkModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver, // obrigatório
+      driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       playground: true,
       path: '/graphql',
     }),
+    LinkModule,
     AuthModule,
   ],
 })
