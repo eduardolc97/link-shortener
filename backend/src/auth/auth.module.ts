@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthResolver } from './auth.resolver';
 import { JwtModule } from '@nestjs/jwt';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
@@ -10,6 +12,6 @@ import { JwtModule } from '@nestjs/jwt';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  providers: [AuthService, AuthResolver],
+  providers: [AuthService, AuthResolver, PrismaService, JwtStrategy],
 })
 export class AuthModule {}
